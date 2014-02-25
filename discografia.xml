@@ -1,0 +1,21 @@
+<discografia>
+	<discos>
+		<disco>
+			<autor>The Doors</autor>
+			<ano>1967</ano>
+			<album>The Doors</album>
+		</disco>
+		<disco>
+			<autor> Frank Zappa</autor>
+			<ano>1967</ano>
+			<album>Absolutely Free</album>
+		</disco>
+		<disco>
+			<autor> The Beatles</autor>
+			<ano>1966</ano>
+			<album>Revolver</album>
+		</disco>
+		<info> coleção de xpto </info>
+	</discos>
+</discografia>
+
