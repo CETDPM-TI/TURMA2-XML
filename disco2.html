@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<style>
+			div.disco { 
+				margin:auto;
+				background-color:blue;
+				margin:10px;
+				border-radius: 10px;
+				width:400px;
+			}
+			
+			img.capa {
+				width: 120px;
+				height : 120px;
+				border-radius: 10px;
+				margin:5px;
+
+			}
+			.autor,.ano,.album {
+				font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+				font-weight:bold;
+				font-size:20px;
+				color:silver;
+			}
+			
+		</style>
+		<script src="jquery/jquery-1.11.0.js"></script>
+		<script>
+			$(document).ready( function () {
+				var documentoXML;
+				
+				$.get("discografia.xml",dadoscarregados,"xml");
+				
+				$("#ipesq").keyup(atualizadisco);
+				
+				function dadoscarregados(docXML) {
+					documentoXML = docXML;
+					$("#ipesq").val("");
+					$("#ipesq").trigger("keyup");
+				}
+				
+				
+				
+				// funcao sucesso no carregamento do XML
+				function atualizadisco() {
+					$("#discografia").empty();
+					//alert(documentoXML);
+					// obter a colecao de elementos "disco"
+					os_disco = $(documentoXML).find("disco");
+					//alert("numerode discos encontrado: "+ os_disco.length);
+					pesqRE = new RegExp($("#ipesq").val(),"i");
+					
+
+					os_disco.each(function () {
+						
+						o_autor= $(this).find("autor").text();
+						o_ano= $(this).find("ano").text();
+						o_album= $(this).find("album").text();
+						a_capa= $(this).find("image").text();
+						
+						if (pesqRE.test(o_autor) || pesqRE.test(o_album)  || pesqRE.test(o_ano) ) {
+							
+							o_div = $("<div/>").addClass("disco");
+							a_tabela = $("<table/>");
+						
+							linha1 = $("<tr/>");
+						
+							td11 = $("<td/>").attr("rowspan","3");
+							imgcapa = $("<img/>").addClass("capa").attr("src",a_capa);
+							td11.append(imgcapa);
+						
+							td12 = $("<td/>").addClass("autor").html(o_autor);
+						
+							linha1.append(td11).append(td12);
+						
+							linha2 = $("<tr/>");
+						
+							td22 = $("<td/>").addClass("album").html(o_album);
+							linha2.append(td22);
+						
+							linha3 = $("<tr/>");
+						
+							td32 = $("<td/>").addClass("ano").html(o_ano);
+							linha3.append(td32);
+						
+							a_tabela.append(linha1).append(linha2).append(linha3);
+							o_div.append(a_tabela);
+							$("#discografia").append(o_div);
+						}
+						
+					})
+					
+										
+				}
+					
+			});
+				
+		</script>
+	</head>
+	<body>
+		<h1>A Minha Discografia</h1>
+		<div id="pesquisa"><input id="ipesq" type="text"/></div>
+		<div id="discografia"></div>
+	</body>
+	
+</html>
