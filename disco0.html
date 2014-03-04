@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<style>
+			#albumimg {
+				position: absolute;
+				left: 40%;
+				top: 40%;
+			}
+		</style>
+		<script src="jquery/jquery-1.11.0.js"></script>
+		<script>
+			$(document).ready( function () {
+				$("#albumimg").hide();
+				$.get("discografia.xml",dadoscarregados,"xml");
+				
+				
+				
+				function displayimage() {
+					
+					$("#albumimg img").attr("src",$(this).data("imageurl"));
+					$("#albumimg").show();
+					
+				}
+				
+				// funcao sucesso no carregamento do XML
+				function dadoscarregados(documentoXML) {
+					
+					alert(documentoXML);
+					
+					listadediscos = $("<ul/>");
+					$("body").append(listadediscos);
+					$(documentoXML).find("disco").each(function () {
+						autor = $(this).find("autor").text();
+						ano   = $(this).find("ano").text();
+						album = $(this).find("album").text();
+						url = $(this).find("image").text();
+						item = $("<li/>");
+						item.html(album + " ("+ano+") "+ " | " + autor);
+						
+						item.data("imageurl",url)
+						listadediscos.append(item);
+						item.mouseover(displayimage);					
+					})
+					
+				}
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div id="albumimg">
+			<img src=""/>
+		</div>
+		<h1>A Minha Discografia</h1>
+	</body>
+</html>

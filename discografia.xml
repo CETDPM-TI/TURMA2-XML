@@ -4,16 +4,19 @@
 			<autor>The Doors</autor>
 			<ano>1967</ano>
 			<album>The Doors</album>
+			<image>http://upload.wikimedia.org/wikipedia/en/thumb/1/16/Revolver.jpg/220px-Revolver.jpg</image>
 		</disco>
 		<disco>
 			<autor> Frank Zappa</autor>
 			<ano>1967</ano>
 			<album>Absolutely Free</album>
+			<image>http://upload.wikimedia.org/wikipedia/en/thumb/a/a4/PleasePleaseMe.jpg/220px-PleasePleaseMe.jpg</image>
 		</disco>
 		<disco>
 			<autor> The Beatles</autor>
 			<ano>1966</ano>
 			<album>Revolver</album>
+			<image>http://upload.wikimedia.org/wikipedia/en/thumb/5/50/Sgt._Pepper%27s_Lonely_Hearts_Club_Band.jpg/220px-Sgt._Pepper%27s_Lonely_Hearts_Club_Band.jpg</image>
 		</disco>
 		<info> coleção de xpto </info>
 	</discos>
